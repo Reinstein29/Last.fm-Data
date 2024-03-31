@@ -15,8 +15,8 @@ def printProgress(num, totalPages):
     print(f"Processing the data... {str(num)}/{str(totalPages)}")
 
 
-api_key = "46cba770cc02fc20c23ff9438eb1b141" # Your API key
-username = "Reinstein29" # Username 
+api_key = "" # Your API key
+username = "" # Username 
 limit = 800 # Number of tracks on each page (one page per request, max 1000 tracks per page)
 
 url = f"http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user={username}&api_key={api_key}&format=json&limit={limit}"
@@ -55,6 +55,8 @@ with open(csvfilename, "w", newline="") as file:
             print("Some error")
         # Prints progress in the beginning, end and per 10 pages (You can change the value)
         j = totalPages + 1 - i
-        if j == 1 or j == totalPages or j % 10 == 0:
-            printProgress(j, totalPages)
+
+        printProgress(j, totalPages)
+        # if j == 1 or j == totalPages or j % 10 == 0:
+        #     printProgress(j, totalPages)
     print("Done!")
